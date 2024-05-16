@@ -2,11 +2,11 @@ package matheus.api.api.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import matheus.api.api.Repository.UsuarioRepository;
+import matheus.api.api.Repository.TipoPatrimonioRepository;
 
 @Service
-public class UsuarioService {
-    
+public class TipoPatrimonioService {
+
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private TipoPatrimonioRepository tipoPatrimonioRepository;
 }
