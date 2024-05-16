@@ -6,18 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import matheus.api.api.Model.BlocoPatrimonio;
-import matheus.api.api.Service.BlocoPatrimonioService;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import matheus.api.api.Model.BlocoPatrimonio;
+import matheus.api.api.Service.BlocoPatrimonioService;
 import org.springframework.web.bind.annotation.PutMapping;
-
-
 
 @RestController
 @RequestMapping("/blocopatrimonio")
@@ -31,7 +27,7 @@ public class BlocoPatrimonioController {
         return blocoPatrimonioService.findAll();
     }
     
-    @GetMapping("/id_bloco_patrimonio")
+    @GetMapping("/{id_bloco_patrimonio}")
     public ResponseEntity<BlocoPatrimonio> getBlocoPatrimonioById(@PathVariable Integer id_bloco_patrimonio){
         Optional<BlocoPatrimonio> blocoPatrimonio = blocoPatrimonioService.findById(id_bloco_patrimonio);
         return blocoPatrimonio.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -42,11 +38,9 @@ public class BlocoPatrimonioController {
         return blocoPatrimonioService.save(blocoPatrimonio);
     }
 
-    /*
-    @PutMapping("/{id_bloco_patrimonio}")
+    /*@PutMapping("/{id_bloco_patrimonio}")
     public ResponseEntity<BlocoPatrimonio> updateBlocoPatrimonio(@PathVariable)
     }  AJUSTAR CODIGO DE ATUALIZAÇÃO QUANDO OBTER O BANCO JA MODELADO*/
-    
 
     @DeleteMapping("/{id_bloco_patrimonio}")
     public ResponseEntity<Void> deleteAdministrador(@PathVariable Integer id_bloco_patrimonio){

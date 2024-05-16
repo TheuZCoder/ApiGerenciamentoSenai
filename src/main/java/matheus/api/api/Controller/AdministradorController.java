@@ -40,7 +40,6 @@ public class AdministradorController {
     
     /*@PutMapping("/{id_administrador}")
     public ResponseEntity<Administrador> updateAdministrador(@PathVariable Integer id_administrador ){
-        
     }         AJUSTAR CODIGO DE ATUALIZAÇÃO QUANDO OBTER O BANCO JA MODELADO*/
     
     @DeleteMapping("/{id_administrador}")
