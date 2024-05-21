@@ -4,7 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "fornecedor")
 @Entity
 public class Fornecedor {
 
@@ -12,23 +20,4 @@ public class Fornecedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cnpj_fornecedor;
     private String nome_fornecedor;
-
-    // getters and setters
-
-    public Integer getCnpj_fornecedor() {
-        return cnpj_fornecedor;
-    }
-
-    public void setCnpj_fornecedor(Integer cnpj_fornecedor) {
-        this.cnpj_fornecedor = cnpj_fornecedor;
-    }
-
-    public String getNome_fornecedor() {
-        return nome_fornecedor;
-    }
-
-    public void setNome_fornecedor(String nome_fornecedor) {
-        this.nome_fornecedor = nome_fornecedor;
-    }
-
 }

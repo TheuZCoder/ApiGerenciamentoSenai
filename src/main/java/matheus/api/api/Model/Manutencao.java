@@ -4,7 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "manutencao")
 @Entity
 public class Manutencao {
 
@@ -13,30 +21,4 @@ public class Manutencao {
     private Integer id_manutencao;
     private String status;
     private String descricao;
-
-    // getters and setters
-
-    public Integer getId_manutencao() {
-        return id_manutencao;
-    }
-
-    public void setId_manutencao(Integer id_manutencao) {
-        this.id_manutencao = id_manutencao;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 }

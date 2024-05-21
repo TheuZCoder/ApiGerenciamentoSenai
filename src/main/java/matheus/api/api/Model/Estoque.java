@@ -6,7 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "estoque")
 @Entity
 public class Estoque {
 
@@ -17,32 +25,6 @@ public class Estoque {
 
     @ManyToOne
     @JoinColumn(name = "id_material")
-    private Material material;
-
-    // getters and setters
-
-    public Integer getId_estoque() {
-        return id_estoque;
-    }
-
-    public void setId_estoque(Integer id_estoque) {
-        this.id_estoque = id_estoque;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
+    private Material Material;
 
 }

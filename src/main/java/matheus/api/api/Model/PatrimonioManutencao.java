@@ -6,6 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "patrimonioManutencao")
 
 @Entity
 public class PatrimonioManutencao {
@@ -16,46 +25,11 @@ public class PatrimonioManutencao {
 
     @ManyToOne
     @JoinColumn(name = "id_manutencao")
-    private Integer manutencao;
+    private Manutencao Manutencao;
 
     @ManyToOne
     @JoinColumn(name = "id_patrimonio")
-    private Integer patrimonio;
+    private Patrimonio Patrimonio;
 
     private String defeito;
-
-    // getters and setters
-
-    public Integer getId_PatrimonioManutencao() {
-        return id_PatrimonioManutencao;
-    }
-
-    public void setId_PatrimonioManutencao(Integer id_PatrimonioManutencao) {
-        this.id_PatrimonioManutencao = id_PatrimonioManutencao;
-    }
-
-    public Integer getManutencao() {
-        return manutencao;
-    }
-
-    public void setManutencao(Integer manutencao) {
-        this.manutencao = manutencao;
-    }
-
-    public Integer getPatrimonio() {
-        return patrimonio;
-    }
-
-    public void setPatrimonio(Integer patrimonio) {
-        this.patrimonio = patrimonio;
-    }
-
-    public String getDefeito() {
-        return defeito;
-    }
-
-    public void setDefeito(String defeito) {
-        this.defeito = defeito;
-    }
-
 }

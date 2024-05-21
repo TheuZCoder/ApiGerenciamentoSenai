@@ -6,7 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "baixaManutencao")
 @Entity
 public class BaixaManutencao {
     
@@ -16,9 +24,9 @@ public class BaixaManutencao {
     
     @ManyToOne
     @JoinColumn(name = "id_baixa")
-    private Integer baixa;
+    private BaixaPatrimonio BaixaPatrimonio;
     
     @ManyToOne
     @JoinColumn(name = "id_manutencao")
-    private Integer manutencao;
+    private Manutencao Manutencao;
 }

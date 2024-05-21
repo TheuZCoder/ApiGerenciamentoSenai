@@ -4,6 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Table(name = "tipoPatrimonio")
 
 @Entity
 public class TipoPatrimonio {
@@ -12,23 +21,4 @@ public class TipoPatrimonio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_tipo;
     private String nome_tipo;
-
-    // getters and setters
-
-    public Integer getId_tipo() {
-        return id_tipo;
-    }
-
-    public void setId_tipo(Integer id_tipo) {
-        this.id_tipo = id_tipo;
-    }
-
-    public String getNome_tipo() {
-        return nome_tipo;
-    }
-
-    public void setNome_tipo(String nome_tipo) {
-        this.nome_tipo = nome_tipo;
-    }
-
 }
