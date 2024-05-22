@@ -1,6 +1,8 @@
 package matheus.api.api.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,7 +17,9 @@ import lombok.NoArgsConstructor;
 public class Administrador {
 
     @Id
-    private Integer cpf_adm;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_adm;
+    private Long cpf_adm;
     private String nome_adm;
     private String email_adm;
     private String senha_adm;

@@ -27,7 +27,7 @@ public class AdministradorController {
         return administradorService.findAll();
     }
 
-    @GetMapping("/{cpf_adm}")
+    @GetMapping("/{id_adm}")
     public ResponseEntity<Administrador> getAdministradorById(@PathVariable Integer id_administrador){
         Optional<Administrador> administrador = administradorService.findById(id_administrador);
         return administrador.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -38,7 +38,7 @@ public class AdministradorController {
         return administradorService.save(administrador);
     }
     
-    @PutMapping("/{cpf_adm}")
+    @PutMapping("/{id_adm}")
     public ResponseEntity<Administrador> updateAdministrador(
             @PathVariable Integer cpf_adm,
             @RequestBody Administrador administradorDetails) {
@@ -47,6 +47,7 @@ public class AdministradorController {
 
         if (administradorOptional.isPresent()) {
             Administrador administrador = administradorOptional.get();
+            administrador.setCpf_adm(administradorDetails.getCpf_adm());
             administrador.setNome_adm(administradorDetails.getNome_adm());
             administrador.setEmail_adm(administradorDetails.getEmail_adm());
             administrador.setSenha_adm(administradorDetails.getSenha_adm());
@@ -58,7 +59,7 @@ public class AdministradorController {
         }
     }
     
-    @DeleteMapping("/{cpf_adm}")
+    @DeleteMapping("/{id_adm}")
     public ResponseEntity<Void> deleteAdministrador(@PathVariable Integer id_administrador){
         administradorService.deleteById(id_administrador);
         return ResponseEntity.noContent().build();

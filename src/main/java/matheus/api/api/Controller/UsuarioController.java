@@ -47,6 +47,7 @@ public class UsuarioController {
 
         if (usuarioOptional.isPresent()) {
             Usuario usuario = usuarioOptional.get();
+            usuario.setCpf_usuario(usuarioDetails.getCpf_usuario());
             usuario.setNome_usuario(usuarioDetails.getNome_usuario());
             usuario.setEmail_usuario(usuarioDetails.getEmail_usuario());
             usuario.setSenha_usuario(usuarioDetails.getSenha_usuario());
