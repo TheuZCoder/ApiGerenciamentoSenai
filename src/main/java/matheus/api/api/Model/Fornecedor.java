@@ -18,6 +18,7 @@ public class Fornecedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_fornecedor;
     private Integer cnpj_fornecedor;
     private String nome_fornecedor;
 }

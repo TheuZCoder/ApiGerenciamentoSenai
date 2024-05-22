@@ -20,7 +20,7 @@ public class SaidaMaterial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_saida;
+    private Integer id_saidaMaterial;
     private Integer data;
 
     @ManyToOne

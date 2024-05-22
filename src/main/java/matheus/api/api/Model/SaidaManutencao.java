@@ -20,7 +20,7 @@ public class SaidaManutencao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_saida;
+    private Integer id_saidaManutencao;
     private Integer data;
     private String descricao;
 
