@@ -38,9 +38,25 @@ public class UsuarioController {
         return usuarioService.save(usuario);
     }
 
-    /*@PutMapping("/{id_usuario}")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable Integer id_usuario){
-    }*/
+    @PutMapping("/{id_usuario}")
+    public ResponseEntity<Usuario> updateUsuario(
+            @PathVariable Integer id_usuario,
+            @RequestBody Usuario usuarioDetails) {
+        
+        Optional<Usuario> usuarioOptional = usuarioService.findById(id_usuario);
+
+        if (usuarioOptional.isPresent()) {
+            Usuario usuario = usuarioOptional.get();
+            usuario.setNome_usuario(usuarioDetails.getNome_usuario());
+            usuario.setEmail_usuario(usuarioDetails.getEmail_usuario());
+            usuario.setSenha_usuario(usuarioDetails.getSenha_usuario());
+            
+            final Usuario updatedUsuario = usuarioService.save(usuario);
+            return ResponseEntity.ok(updatedUsuario);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping
     public ResponseEntity<Void> deleteUsuario(@PathVariable Integer id_usuario){

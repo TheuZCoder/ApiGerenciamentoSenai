@@ -27,7 +27,7 @@ public class AdministradorController {
         return administradorService.findAll();
     }
 
-    @GetMapping("/{id_administrador}")
+    @GetMapping("/{cpf_adm}")
     public ResponseEntity<Administrador> getAdministradorById(@PathVariable Integer id_administrador){
         Optional<Administrador> administrador = administradorService.findById(id_administrador);
         return administrador.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -38,11 +38,27 @@ public class AdministradorController {
         return administradorService.save(administrador);
     }
     
-    /*@PutMapping("/{id_administrador}")
-    public ResponseEntity<Administrador> updateAdministrador(@PathVariable Integer id_administrador ){
-    }         AJUSTAR CODIGO DE ATUALIZAÇÃO QUANDO OBTER O BANCO JA MODELADO*/
+    @PutMapping("/{cpf_adm}")
+    public ResponseEntity<Administrador> updateAdministrador(
+            @PathVariable Integer cpf_adm,
+            @RequestBody Administrador administradorDetails) {
+        
+        Optional<Administrador> administradorOptional = administradorService.findById(cpf_adm);
+
+        if (administradorOptional.isPresent()) {
+            Administrador administrador = administradorOptional.get();
+            administrador.setNome_adm(administradorDetails.getNome_adm());
+            administrador.setEmail_adm(administradorDetails.getEmail_adm());
+            administrador.setSenha_adm(administradorDetails.getSenha_adm());
+            
+            final Administrador updatedAdministrador = administradorService.save(administrador);
+            return ResponseEntity.ok(updatedAdministrador);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     
-    @DeleteMapping("/{id_administrador}")
+    @DeleteMapping("/{cpf_adm}")
     public ResponseEntity<Void> deleteAdministrador(@PathVariable Integer id_administrador){
         administradorService.deleteById(id_administrador);
         return ResponseEntity.noContent().build();

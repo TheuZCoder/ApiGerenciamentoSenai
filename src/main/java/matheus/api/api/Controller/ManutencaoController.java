@@ -38,9 +38,24 @@ public class ManutencaoController {
         return manutencaoService.save(manutencao);
     }
     
-    /*@PutMapping("/{id_manutencao}")
-    public ResponseEntity<Manutencao> updateManutencao(@PathVariable Integer id_manutencao, @RequestBody Manutencao manutencao){
-    }*/
+    @PutMapping("/{id_manutencao}")
+    public ResponseEntity<Manutencao> updateManutencao(
+            @PathVariable Integer id_manutencao,
+            @RequestBody Manutencao manutencaoDetails) {
+        
+        Optional<Manutencao> manutencaoOptional = manutencaoService.findById(id_manutencao);
+
+        if (manutencaoOptional.isPresent()) {
+            Manutencao manutencao = manutencaoOptional.get();
+            manutencao.setStatus(manutencaoDetails.getStatus());
+            manutencao.setDescricao(manutencaoDetails.getDescricao());
+            
+            final Manutencao updatedManutencao = manutencaoService.save(manutencao);
+            return ResponseEntity.ok(updatedManutencao);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/{id_manutencao}")
     public ResponseEntity<Void> deleteManutencao(@PathVariable Integer id_manutencao){

@@ -38,9 +38,26 @@ public class PatrimonioController {
         return patrimonioService.save(patrimonio);
     }
 
-    /*@PutMapping("/{id_patrimonio}")
-    public ResponseEntity<Patrimonio> updatePatrimonio(@PathVariable Integer id_patrimonio){
-    } */
+    @PutMapping("/{id_patrimonio}")
+    public ResponseEntity<Patrimonio> updatePatrimonio(
+            @PathVariable Integer id_patrimonio,
+            @RequestBody Patrimonio patrimonioDetails) {
+        
+        Optional<Patrimonio> patrimonioOptional = patrimonioService.findById(id_patrimonio);
+
+        if (patrimonioOptional.isPresent()) {
+            Patrimonio patrimonio = patrimonioOptional.get();
+            patrimonio.setImg_patrimonio(patrimonioDetails.getImg_patrimonio());
+            patrimonio.setDescricao_patrimonio(patrimonioDetails.getDescricao_patrimonio());
+            patrimonio.setNome_patrimonio(patrimonioDetails.getNome_patrimonio());
+            patrimonio.setStatus_patrimonio(patrimonioDetails.getStatus_patrimonio());
+            
+            final Patrimonio updatedPatrimonio = patrimonioService.save(patrimonio);
+            return ResponseEntity.ok(updatedPatrimonio);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/{id_patrimonio}")
     public ResponseEntity<Void> deletePatrimonio(@PathVariable Integer id_patrimonio){

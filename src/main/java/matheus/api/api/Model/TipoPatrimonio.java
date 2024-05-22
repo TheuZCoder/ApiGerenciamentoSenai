@@ -19,6 +19,6 @@ public class TipoPatrimonio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_tipo;
+    private Integer id_tipo_patrimonio;
     private String nome_tipo;
 }

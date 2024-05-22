@@ -38,9 +38,23 @@ public class TipoPatrimonioController {
         return tipoPatrimonioService.save(tipoPatrimonio);
     }
 
-    /*@PutMapping("/{id_tipo_patrimonio}")
-    public ResponseEntity<TipoPatrimonio> updateTipoPatrimonio(@PathVariable Integer id_tipo_patrimonio, @RequestBody TipoPatrimonio tipoPatrimonio){   
-    }*/
+    @PutMapping("/{id_tipo_patrimonio}")
+    public ResponseEntity<TipoPatrimonio> updateTipoPatrimonio(
+            @PathVariable Integer id_tipo_patrimonio,
+            @RequestBody TipoPatrimonio tipoPatrimonioDetails) {
+        
+        Optional<TipoPatrimonio> tipoPatrimonioOptional = tipoPatrimonioService.findById(id_tipo_patrimonio);
+
+        if (tipoPatrimonioOptional.isPresent()) {
+            TipoPatrimonio tipoPatrimonio = tipoPatrimonioOptional.get();
+            tipoPatrimonio.setNome_tipo(tipoPatrimonioDetails.getNome_tipo());
+            
+            final TipoPatrimonio updatedTipoPatrimonio = tipoPatrimonioService.save(tipoPatrimonio);
+            return ResponseEntity.ok(updatedTipoPatrimonio);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/{id_tipo_patrimonio}")
     public ResponseEntity<Void> deleteTipoPatrimonio(@PathVariable Integer id_tipo_patrimonio){

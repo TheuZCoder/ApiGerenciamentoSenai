@@ -38,9 +38,23 @@ public class BlocoPatrimonioController {
         return blocoPatrimonioService.save(blocoPatrimonio);
     }
 
-    /*@PutMapping("/{id_bloco_patrimonio}")
-    public ResponseEntity<BlocoPatrimonio> updateBlocoPatrimonio(@PathVariable)
-    }  AJUSTAR CODIGO DE ATUALIZAÇÃO QUANDO OBTER O BANCO JA MODELADO*/
+    @PutMapping("/{id_bloco_patrimonio}")
+    public ResponseEntity<BlocoPatrimonio> updateBlocoPatrimonio(
+            @PathVariable Integer id_bloco_patrimonio,
+            @RequestBody BlocoPatrimonio blocoPatrimonioDetails) {
+        
+        Optional<BlocoPatrimonio> blocoPatrimonioOptional = blocoPatrimonioService.findById(id_bloco_patrimonio);
+
+        if (blocoPatrimonioOptional.isPresent()) {
+            BlocoPatrimonio blocoPatrimonio = blocoPatrimonioOptional.get();
+            blocoPatrimonio.setNome_bloco(blocoPatrimonioDetails.getNome_bloco());
+            
+            final BlocoPatrimonio updatedBlocoPatrimonio = blocoPatrimonioService.save(blocoPatrimonio);
+            return ResponseEntity.ok(updatedBlocoPatrimonio);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @DeleteMapping("/{id_bloco_patrimonio}")
     public ResponseEntity<Void> deleteAdministrador(@PathVariable Integer id_bloco_patrimonio){
