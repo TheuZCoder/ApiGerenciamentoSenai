@@ -23,7 +23,7 @@ public class BaixaManutencao {
     private Integer id_baixaManutencao;
     
     @ManyToOne
-    @JoinColumn(name = "id_baixa")
+    @JoinColumn(name = "id_baixaPatrimonio")
     private BaixaPatrimonio BaixaPatrimonio;
     
     @ManyToOne

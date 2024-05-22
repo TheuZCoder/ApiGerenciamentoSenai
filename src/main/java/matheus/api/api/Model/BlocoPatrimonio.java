@@ -18,6 +18,6 @@ public class BlocoPatrimonio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_bloco;
+    private Integer id_blocoPatrimonio;
     private String nome_bloco;
 }

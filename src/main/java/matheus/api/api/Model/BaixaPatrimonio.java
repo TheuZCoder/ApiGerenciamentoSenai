@@ -21,7 +21,7 @@ public class BaixaPatrimonio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
-    private Integer id_baixa;
+    private Integer id_baixaPatrimonio;
     private Integer data;
     private String motivo;
 
