@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Table(name = "tipoPatrimonio")
-
 @Entity
 public class TipoPatrimonio {
 

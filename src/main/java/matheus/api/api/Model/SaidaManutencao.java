@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Table(name = "saidaManutencao")
-
 @Entity
 public class SaidaManutencao {
 
