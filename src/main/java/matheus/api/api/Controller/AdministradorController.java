@@ -28,8 +28,8 @@ public class AdministradorController {
     }
 
     @GetMapping("/{id_adm}")
-    public ResponseEntity<Administrador> getAdministradorById(@PathVariable Integer id_administrador){
-        Optional<Administrador> administrador = administradorService.findById(id_administrador);
+    public ResponseEntity<Administrador> getAdministradorById(@PathVariable Integer id_adm){
+        Optional<Administrador> administrador = administradorService.findById(id_adm);
         return administrador.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
@@ -40,10 +40,10 @@ public class AdministradorController {
     
     @PutMapping("/{id_adm}")
     public ResponseEntity<Administrador> updateAdministrador(
-            @PathVariable Integer cpf_adm,
+            @PathVariable Integer id_adm,
             @RequestBody Administrador administradorDetails) {
         
-        Optional<Administrador> administradorOptional = administradorService.findById(cpf_adm);
+        Optional<Administrador> administradorOptional = administradorService.findById(id_adm);
 
         if (administradorOptional.isPresent()) {
             Administrador administrador = administradorOptional.get();
@@ -60,8 +60,8 @@ public class AdministradorController {
     }
     
     @DeleteMapping("/{id_adm}")
-    public ResponseEntity<Void> deleteAdministrador(@PathVariable Integer id_administrador){
-        administradorService.deleteById(id_administrador);
+    public ResponseEntity<Void> deleteAdministrador(@PathVariable Integer id_adm){
+        administradorService.deleteById(id_adm);
         return ResponseEntity.noContent().build();
     }
 }

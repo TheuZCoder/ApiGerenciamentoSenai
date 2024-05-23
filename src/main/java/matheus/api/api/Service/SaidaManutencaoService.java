@@ -25,4 +25,8 @@ public class SaidaManutencaoService {
     public SaidaManutencao save(SaidaManutencao saidaManutencao){
         return saidaManutencaoRepository.save(saidaManutencao);
     }
+
+    public void deleteById(Integer id_saidaManutencao){
+        saidaManutencaoRepository.deleteById(id_saidaManutencao);
+    }
 }

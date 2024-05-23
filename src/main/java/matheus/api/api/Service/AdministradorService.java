@@ -17,15 +17,15 @@ public class AdministradorService {
         return administradorRepository.findAll();
     }
 
-    public Optional<Administrador> findById(Integer cpf_adm){
-        return administradorRepository.findById(cpf_adm);
+    public Optional<Administrador> findById(Integer id_adm){
+        return administradorRepository.findById(id_adm);
     }
 
     public Administrador save(Administrador administrador){
         return administradorRepository.save(administrador);
     }
 
-    public void deleteById(Integer cpf_adm){
-        administradorRepository.deleteById(cpf_adm);
+    public void deleteById(Integer id_adm){
+        administradorRepository.deleteById(id_adm);
     }
 }
