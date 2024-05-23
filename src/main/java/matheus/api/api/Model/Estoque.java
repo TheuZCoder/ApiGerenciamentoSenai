@@ -1,5 +1,6 @@
 package matheus.api.api.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +22,8 @@ public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_estoque;
+
+    @Column(length = 10, nullable = false)
     private Integer quantidade;
 
     @ManyToOne

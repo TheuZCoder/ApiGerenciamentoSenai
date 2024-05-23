@@ -27,5 +27,5 @@ public class AdministradorService {
 
     public void deleteById(Integer id_adm){
         administradorRepository.deleteById(id_adm);
-    }
+    } 
 }

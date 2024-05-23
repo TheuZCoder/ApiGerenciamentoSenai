@@ -1,5 +1,6 @@
 package matheus.api.api.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,10 @@ public class Manutencao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_manutencao;
+
+    @Column(length = 15, nullable = false)
     private String status;
+
+    @Column(length = 45, nullable = false)
     private String descricao;
 }
