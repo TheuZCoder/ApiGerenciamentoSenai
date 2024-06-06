@@ -28,4 +28,8 @@ public class UsuarioService {
     public void deleteById(Integer id_usuario){
         usuarioRepository.deleteById(id_usuario);
     }
+
+    public Usuario buscarPorCpfESenha(Long cpf_usuario, String senha_usuario) {
+        return usuarioRepository.findByCpfAndSenha(cpf_usuario, senha_usuario);
+    }
 }
