@@ -1,6 +1,13 @@
 # ApiGerenciamentoSenai
 Foi desenvolvida utilizando a arquitetura RESTful, proporcionando uma interface consistente e escalável para o gerenciamento de materiais e fornecedores. A API oferece endpoints para operações CRUD (Create, Read, Update, Delete) para materiais e fornecedores, permitindo a integração fácil com o frontend.
 
+
+## Pré-requisitos
+
+:warning: [SpringBoot](https://spring.io/projects/spring-boot) 
+:warning: [PostgreSQL](https://www.pgadmin.org/download/pgadmin-4-windows/)
+
+
 ## Casos de Uso
 
 Método POST:
